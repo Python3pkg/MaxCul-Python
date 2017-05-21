@@ -32,7 +32,7 @@ DEVICE_TYPES = {
     4: "ShutterContact",
     5: "PushButton"
 }
-DEVICE_TYPES_BY_NAME = dict((v, k) for k, v in DEVICE_TYPES.items())
+DEVICE_TYPES_BY_NAME = dict((v, k) for k, v in list(DEVICE_TYPES.items()))
 
 MODE_IDS = {
     0: "auto",
@@ -128,7 +128,7 @@ class MoritzMessage(object):
     def encode_message(self, payload={}):
         """Prepare message to be sent on wire"""
 
-        msg_ids = dict((v, k) for k, v in MORITZ_MESSAGE_IDS.items())
+        msg_ids = dict((v, k) for k, v in list(MORITZ_MESSAGE_IDS.items()))
         msg_id = msg_ids[self.__class__]
 
         message = ""
@@ -437,7 +437,7 @@ class SetTemperatureMessage(MoritzMessage):
             desired_temperature = round(payload['desired_temperature'] * 2) / 2.0
         int_temperature = int(desired_temperature * 2)
 
-        modes = dict((v, k) for (k, v) in MODE_IDS.items())
+        modes = dict((v, k) for (k, v) in list(MODE_IDS.items()))
         mode = modes[payload['mode']]
 
         # TODO: you can add a until time for chort changes

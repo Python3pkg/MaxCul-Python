@@ -364,7 +364,7 @@ if __name__ == '__main__':
         import detach
         with detach.Detach(daemonize=True) as d:
             if d.pid:
-                print("started process {} in background with log to server.log".format(d.pid))
+                print(("started process {} in background with log to server.log".format(d.pid)))
             else:
                 main(args)
     else:
